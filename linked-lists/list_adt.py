@@ -52,6 +52,19 @@ class LinkedList(object):
             temp = next
         return prev
 
+    def reverseHelper(self, A, result):
+        if not A.next:
+            result = A
+            return result
+        result = self.reverseHelper(A.next, result)
+        A.next.next = A
+        A.next = None
+        return result
+
+    def reverseList(self, A):
+        result = None
+        return self.reverseHelper(A, result)
+
 def defineLists():
     A = LinkedList()
     B = LinkedList()
