@@ -16,5 +16,5 @@ def permutations(A):
     permutationHelper(0, temp, result, A)
     print result
 
-A = [1,2,3]
+A = [ 1, 2, 3, 4, 5, 6, 7, 8 ]
 permutations(A)
