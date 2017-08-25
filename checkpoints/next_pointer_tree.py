@@ -11,7 +11,7 @@ from collections import deque
 class Solution:
     # @param root, a tree node
     # @return nothing
-    def connect(self, root):
+    def connectV1(self, root):
         q1, q2 = deque(), deque()
         q1.append(root)
 
@@ -29,3 +29,20 @@ class Solution:
                 q1 = q2
                 q2 = deque()
         return root
+
+    def connect(self, root):
+        # Works only for FULL binary trees.
+        p = root
+        p.next = None
+        while p:
+            q = p
+            while q:
+                if q.left:
+                    q.left.next = q.right
+                if q.right:
+                    q.right.next = q.next.left if q.next else None
+                q = q.next
+            if p.left:
+                p = p.left
+            else:
+                break
